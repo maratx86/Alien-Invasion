@@ -1,6 +1,17 @@
 import os
 
 
+'''
+This module using for additional functions and contain this functions
+    check_int
+        return for you True if number may to tranform into int()
+    directory_finder
+        return you dictionary with all necessary paths
+    check_settings
+        import all necessary data from "settings" file
+'''
+
+
 def check_int(num):
     try:
         int(num)
@@ -18,6 +29,10 @@ def directory_finder():
         media_dir = main_dir + "\\media\\"
         shop_dir = media_dir + "shop\\"
         mode_dir = media_dir + "mode\\"
+        slash = '\\'
+        temp_dir = os.getenv('TEMP')
+        if temp_dir == None: temp_dir = os.getenv('TMP')
+        temp_dir += slash
     # ~ elif platform == "darwin": _os_ = "OS X"
     else:
         _os_ = "linux or MacOS"
@@ -25,9 +40,15 @@ def directory_finder():
         media_dir = main_dir + "/media/"
         shop_dir = media_dir + "shop/"
         mode_dir = media_dir + "mode/"
-
+        slash = "/"
+        temp_dir = os.getenv('TEMP')
+        if temp_dir == None: temp_dir = os.getenv('TMP')
+        temp_dir += slash
     directories = {
         "os":_os_,
+        "platform": platform,
+        "slash": slash,
+        "temp_dir": temp_dir,
         "main_dir": main_dir,
         "media_dir": media_dir,
         "shop_dir": shop_dir,

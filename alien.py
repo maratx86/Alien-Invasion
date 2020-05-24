@@ -62,6 +62,7 @@ for key, value in settings_dict.items():
 # print(settings_dict)
 
 def game_making(mode):
+    from statistic import Stat
     global WIDTH, HEIGHT, directories
     os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -216,7 +217,7 @@ def game_making(mode):
 
     shell_objects = pygame.sprite.Group()
 
-    from statistic import Stat
+
     stat = Stat()
     
     kill_fall_object = 0

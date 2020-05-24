@@ -2,9 +2,24 @@ import pygame
 
 
 class Character(pygame.sprite.Sprite):
-
     count_of_shells = 0
     count_of_jumps = 0
+
+    '''
+    This class for creating character, there are this methods
+        update
+            Additing number in temp_score (Using for stopping and continuing game)
+        move
+            For moving character in the screen
+        go_left
+            For going to left
+        go_right
+            For going to right
+        jump
+            For jumping moves
+        death
+            For changing character`s image
+    '''
 
     def __init__(self, level, character_right_img, character_left_img, character_death_img, Character_position, WIDTH,
                  HEIGHT, max_count_of_shells):

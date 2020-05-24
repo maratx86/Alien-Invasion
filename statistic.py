@@ -2,6 +2,23 @@ import codecs
 
 
 class Stat():
+    '''
+    This class is the statistic, there are this methods
+        add_temp_score
+            Additing number in temp_score (Using for stopping and continuing game)
+        add_score
+            Additing number in score
+        add_max_score
+            Additing number in max_score if that number bigger then past
+        add_level
+            Additing number in score
+        plus_temp
+            Summ all components in temp_score array
+        rewrite_file
+            This method can rewrite statistic.py file with:
+                additing new statistic`s data (null = False)
+                eraseing all statistics (null = True)
+    '''
     def __init__(self):
         self.temp_score = []
         self.score = [1993, 1668, 2329, 3096]
@@ -29,7 +46,8 @@ class Stat():
             result += i
         return result
 
-    def rewrite_file(self):
+    def rewrite_file(self, null = False):
+
         help_flags = ['score', 'max_score', 'levels', 'max_level']
         f = codecs.open('statistic.py', 'r', 'utf-8')
         data = f.read()

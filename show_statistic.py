@@ -1,5 +1,5 @@
 import pygame
-import os
+from os import environ
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -8,7 +8,11 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 PeachPuff = (255, 218, 185)
 
+
 class Column(pygame.sprite.Sprite):
+    '''
+    This class for creating columns
+    '''
     def __init__(self, x, height, HEIGHT, skip, colour):
         self.width = 5
         super().__init__()
@@ -19,12 +23,15 @@ class Column(pygame.sprite.Sprite):
 
 
 class ShowStat():
+    '''
+    This class for showing statistics in pygame window
+    '''
 
     def __init__(self):
         self.self = 5
 
     def show(self, stat, WIDTH, HEIGHT):
-        os.environ['SDL_VIDEO_CENTERED'] = '1'
+        environ['SDL_VIDEO_CENTERED'] = '1'
         FPS = 30
 
         pygame.init()
@@ -52,8 +59,11 @@ class ShowStat():
         for i in range(number_of_score):
             col_1 = Column(int(skip + _skip_column_ * i + addit), int(stat.score[i] * _one_), HEIGHT, skip, BLACK)
             col_2  = Column(int(skip + _skip_column_ * i + addit + 7), int(stat.levels[i] * _one_level_), HEIGHT, skip, GREEN)
-            all_sprites.add(col_1)
-            all_sprites.add(col_2)
+            sprites_of_score.add(col_1)
+            sprites_of_level.add(col_2)
+
+        all_sprites.add(sprites_of_score)
+        all_sprites.add(sprites_of_level)
 
         running = True
         while running:
