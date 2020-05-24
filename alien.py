@@ -2,8 +2,6 @@ def check_lib():
     try:
         lib = "pygame"
         import pygame
-        lib = 'tkinter'
-        import tkinter
         lib = "random"
         import random
         lib = "os"
@@ -23,19 +21,7 @@ def check_lib():
         print('\n>>>> Библиотека "{}" не установлена <<<<'.format(lib))
         return False
 
-# ~ game_modes = {
-    # ~ 1 : {'name' : '1. Standart', 'cost' : 0},
-    # ~ 2 : {'name' : '2. Second', 'cost' : 300},
-    # ~ 3 : {'name' : '3. Third', 'cost' : 700}
-# ~ }
-# ~ costs = []
-# ~ all_modes_array = []
 
-# ~ for mode_id, mode in game_modes.items():
-    # ~ costs.append(mode['cost'])
-    # ~ all_modes_array.append((mode['name'], mode_id))
-
-# CHECK NECESSARY LIBRARIES
 if check_lib():
     import pygame
     from statistic import Stat
@@ -44,38 +30,13 @@ if check_lib():
     import show_statistic
     import random
     import os
+    import additional
 else:
     print("\n\aОтсутствует какая-то библиотека...")
     raise SystemExit(10)
 
 
-def directory_finder():
-    from sys import platform
-
-    if platform == "win32":
-        _os_ = "windows"
-        main_dir = os.getcwd()
-        media_dir = main_dir + "\\media\\"
-        shop_dir = media_dir + "shop\\"
-        mode_dir = media_dir + "mode\\"
-    # ~ elif platform == "darwin": _os_ = "OS X"
-    else:
-        _os_ = "linux or MacOS"
-        main_dir = os.getcwd()
-        media_dir = main_dir + "/media/"
-        shop_dir = media_dir + "shop/"
-        mode_dir = media_dir + "mode/"
-
-    directories = {
-        "os":_os_,
-        "main_dir": main_dir,
-        "media_dir": media_dir,
-        "shop_dir": shop_dir,
-        "mode_dir": mode_dir
-    }
-    return directories
-
-directories = directory_finder()
+directories = additional.directory_finder()
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
@@ -86,14 +47,24 @@ PINK = (255, 100, 180)
 ORANGE = (255, 100, 10)
 YELLOW = (255, 255, 0)
 
+save_stat_flag = True
 WIDTH = 1080
 HEIGHT = 720
 FPS = 30
 
+
+settings_dict = additional.check_settings()
+for key, value in settings_dict.items():
+    if key == 'save_stat': save_stat_flag = value
+    elif key == 'WIDTH' : WIDTH = value
+    elif key == 'HEIGHT' : HEIGHT = value
+    elif key == 'FPS' : FPS = value
+# print(settings_dict)
+
 def game_making(mode):
-    global WIDTH, HEIGHT
+    global WIDTH, HEIGHT, directories
     os.environ['SDL_VIDEO_CENTERED'] = '1'
-    global directories
+
     game_name = "Alien Invasion ({}x{}) Mode {}".format(WIDTH, HEIGHT, mode)
     Character_position = (WIDTH // 2, 100)
 
@@ -184,9 +155,9 @@ def game_making(mode):
             if death_flag: self.kill()
 
     class ShellObject(pygame.sprite.Sprite):
-        shell_speed = 7
 
         def __init__(self, shell_object_img):
+            self.shell_speed = 7
             super().__init__()
             self.image = shell_object_img
             self.image.set_colorkey((0, 0, 0))
@@ -196,7 +167,7 @@ def game_making(mode):
 
         def update(self):
             if self.rect.top < HEIGHT:
-                self.rect.y += ShellObject.shell_speed
+                self.rect.y += self.shell_speed
             else:
                 character.count_of_shells -= 1
                 self.kill()
@@ -245,6 +216,7 @@ def game_making(mode):
 
     shell_objects = pygame.sprite.Group()
 
+    from statistic import Stat
     stat = Stat()
     
     kill_fall_object = 0
@@ -292,13 +264,14 @@ def game_making(mode):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-                stat.rewrite_file()
+                if save_stat_flag : stat.rewrite_file()
+                else: print('Your flag save statistic is turned off, your progress was not saved')
             if freaze_game:
                 if not pause_flag:
                     if event.type == pygame.KEYDOWN and event.key == pygame.K_F5:
+                        stat.rewrite_file()
                         ss = show_statistic.ShowStat()
                         ss.show(stat, WIDTH//3, HEIGHT)
-                        stat.rewrite_file()
                         game_making(random.randint(1, 3))
 
                 if (event.type == pygame.MOUSEBUTTONDOWN) and (start_button.pressed(pygame.mouse.get_pos())):
@@ -473,5 +446,7 @@ def game_making(mode):
     return CURRENT_SCORE
 
 
-try: game_making(random.randint(1, 3))
-except pygame.error: print('end')
+if __name__ == '__main__':
+    try: game_making(random.randint(1, 3))
+    except pygame.error: print('end')
+else: print()

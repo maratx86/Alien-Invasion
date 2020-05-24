@@ -4,10 +4,10 @@ import codecs
 class Stat():
     def __init__(self):
         self.temp_score = []
-        self.score = [1993, 1668]
-        self.max_score = 1993
-        self.levels = [33, 27]
-        self.max_level = 33
+        self.score = [1993, 1668, 2329, 3096]
+        self.max_score = 3096
+        self.levels = [33, 27, 35, 31]
+        self.max_level = 35
 
     def add_temp_score(self, num):
         self.temp_score.append(num)
@@ -45,8 +45,8 @@ class Stat():
                 temp_line_2 = temp_line_2[0].split('.')
                 if temp_line_2[1] in help_flags: 
                     if temp_line_2[1] == 'score':
-                        line = line.split('[')
-                        if len(line) > 1: line = '{}{}'.format(line[0], self.score)
+                        line = line.split(' = ')
+                        if len(line) > 1: line = '{} = {}'.format(line[0], self.score)
                         else: line = line[0]
                     elif temp_line_2[1] == 'max_score':
                         line = line.split(' = ')
@@ -60,8 +60,8 @@ class Stat():
                         line = line.split(' = ')
                         if len(line) > 1: line = '{} = {}'.format(line[0], self.max_level)
                         else: line = line[0]
-                    print(temp_line_2[1])
-            if line != '': new_data += line + '\n'
+                    print(line)
+            if line != '' : new_data += line + '\n'
         if past_data != new_data:
             f = codecs.open('statistic.py', 'w', 'utf-8')
             f.write(new_data)
