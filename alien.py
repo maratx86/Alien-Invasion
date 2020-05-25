@@ -30,12 +30,10 @@ if check_lib():
     from button import Button
     from character import Character
     import settings
-    import show_statistic
     import random
     import os
     import additional
     import game_functions
-    from bullet import ShellObject
 else:
     print("\nSome library is missing...\a")
     raise SystemExit(10)
@@ -51,8 +49,9 @@ def game_making(mode):
     from statistic import Stat
     global directories
     os.environ['SDL_VIDEO_CENTERED'] = '1'
-
-    game_name = "Alien Invasion ({}x{}) Mode {}".format(settings.WIDTH, settings.HEIGHT, mode)
+    game_name = settings.game_name
+    if settings.show_sreen: game_name += ' ({}x{})'.format(settings.WIDTH, settings.HEIGHT)
+    if settings.show_mode: game_name += ' Mode {}'.format(mode)
 
     pygame.init()
     starting_time = pygame.time.get_ticks()
@@ -74,6 +73,7 @@ def game_making(mode):
     pygame.mixer.init()
     pygame.mixer.music.load(background_music)
     pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(settings.sounds_volume/100)
     pygame.mixer.music.pause()
     pygame.event.wait()
 
@@ -93,7 +93,6 @@ def game_making(mode):
     count_of_collision = 0
     action_from_obj = False
 
-    
 
     class FallObject(pygame.sprite.Sprite):
         falling_speed = 5
@@ -136,27 +135,13 @@ def game_making(mode):
                 character.lives = 0
 
             if death_flag: self.kill()
-
-    
-    class SoundInd(pygame.sprite.Sprite):
-        def __init__(self, sound_on, sound_off):
-            super().__init__(self)
-            self.sound_off = sound_off
-            self.sound_on = sound_on
-            self.image = sound_on
-            self.image.set_colorkey((0, 0, 0))
-            self.rect = self.image.get_rect()
-            self.rect.center = (character.rect.x + 75, character.rect.bottom)
-
-        def update(self):
-            0
     
     def make_harder():
         nonlocal falling_speed
         falling_speed += 1
 
     def generate_wariors(test = False, level = 0):
-        global number_of_row, number_of_war
+        nonlocal number_of_row, number_of_war
         if test:
             fall_object = FallObject(fall_object_img, falling_speed, action_speed,  settings.WIDTH//2, settings.HEIGHT//2 + 200)
             fall_objects.add(fall_object)
@@ -191,11 +176,12 @@ def game_making(mode):
     start_button = Button(screen, (0, 0, 0),
                        (settings.WIDTH - settings.start_button_width) // 2,
                        (settings.HEIGHT - settings.start_button_height) // 2,
-                       settings.start_button_width, settings.start_button_height, 100, 'Start game', (255, 255, 255))
+                       settings.start_button_width, settings.start_button_height, 100,
+                          settings.start_button_text, settings.colours.white)
 
     def new_game(level = 0):
         nonlocal all_sprites, character, all_sprites, fall_objects, shell_objects, kill_fall_object, down, count_of_wariors, count_of_alive
-        additional.write_temp_file(settings.files.temp_count_of_shells, 0)
+        # additional.write_temp_file(settings.files.temp_count_of_shells, 0)
         all_sprites = pygame.sprite.Group()
         character = Character(level, character_right_img, character_left_img, character_death_img)
         all_sprites.add(character)
@@ -214,7 +200,7 @@ def game_making(mode):
     count_of_alive = count_of_wariors
     freaze_game = True
     pause_flag = False
-    start_game_time = 0
+    start_game_time = pygame.time.get_ticks()
     down = False
     down_flag = False
     change_mode = False
@@ -224,7 +210,7 @@ def game_making(mode):
 
     def change_smth(return_dict):
         ['running', 'character', 'freaze_game', 'death_flag', 'shell_objects', 'stat']
-        nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, CURRENT_SCORE, pause_flag
+        nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, CURRENT_SCORE, pause_flag, start_game_time
         for var, val in return_dict.items():
             if var == 'running': running = val
             elif var == 'character': character = val
@@ -234,15 +220,17 @@ def game_making(mode):
             elif var == 'shell_objects': shell_objects = val
             elif var == 'all_sprites': all_sprites = val
             elif var == 'stat': stat = val
-            elif var == 'current_score': CURRENT_SCORE = val
+            elif var == 'start_game_time': start_game_time = val
+            elif var == 'current_score':
+                start_game_time = pygame.time.get_ticks() - val * 100
 
 
     while running:
         clock.tick(settings.FPS)
         for event in pygame.event.get():
-            return_dict = game_functions.check_event(event, stat, freaze_game,
+            return_dict = game_functions.check_event(pygame, event, stat, freaze_game,
                                                      pause_flag, death_flag, character, start_button, shell_objects,
-                                                     all_sprites, shell_object_img, CURRENT_SCORE)
+                                                     all_sprites, shell_object_img, CURRENT_SCORE, start_game_time)
             if return_dict != {}: change_smth(return_dict)
 
         if not freaze_game:

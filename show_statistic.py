@@ -2,12 +2,6 @@ import pygame
 import additional
 from os import environ
 
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-
 settings = additional.check_settings()
 
 
@@ -24,6 +18,21 @@ class Column(pygame.sprite.Sprite):
         self.rect.center = (x, settings.statistic.HEIGHT - settings.statistic.skip_edge - height//2)
 
 
+class CoordLine(pygame.sprite.Sprite):
+    '''
+    This class for creating coord lines
+    '''
+    def __init__(self, flag):
+        self.width = settings.statistic.width
+        super().__init__()
+        if flag: self.image = pygame.Surface((settings.statistic.coord_width, settings.HEIGHT))
+        else: self.image = pygame.Surface((settings.HEIGHT, settings.statistic.coord_width))
+        self.image.fill(settings.colours.black)
+        self.rect = self.image.get_rect()
+        if flag: self.rect.center = (settings.statistic.skip_edge // 2, settings.statistic.HEIGHT // 2)
+        else: self.rect.center = (settings.statistic.HEIGHT // 2, settings.statistic.HEIGHT - settings.statistic.skip_edge)
+
+
 class ShowStat():
     '''
     This class for showing statistics in pygame window
@@ -33,7 +42,7 @@ class ShowStat():
         self.self = 5
 
     def show(self, stat):
-        environ['SDL_VIDEO_CENTERED'] = '1'
+        environ['SDL_VIDEO_CENTERED'] = '500'
         pygame.init()
         pygame.mixer.init()
         screen = pygame.display.set_mode((settings.statistic.WIDTH, settings.statistic.HEIGHT))
@@ -64,6 +73,11 @@ class ShowStat():
 
         all_sprites.add(sprites_of_score)
         all_sprites.add(sprites_of_level)
+
+        cords_h = CoordLine(True)
+        cords_w = CoordLine(False)
+        sprites_of_cord = pygame.sprite.Group(cords_h, cords_w)
+        all_sprites.add(sprites_of_cord)
 
         running = True
         while running:

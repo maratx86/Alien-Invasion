@@ -17,13 +17,15 @@ class Colours:
 
         self.transparency = self.black
 
+
 class StatisticSettings:
     def __init__(self, settings):
         self.WIDTH = settings.WIDTH // 3
         self.HEIGHT = settings.HEIGHT
 
-        self.skip_edge = 20
+        self.skip_edge = 50
         self.width = 5
+        self.coord_width = 1
 
         self.colour_column_score = settings.colours.black
         self.colour_column_level = settings.colours.green
@@ -32,9 +34,14 @@ class StatisticSettings:
 
 class Settings:
     def __init__(self):
-        self.game_name = ''
+        self.game_name = 'Alien Invasion'
+        self.show_sreen = True
+        self.show_mode = True
+
         self.saving_after_quit = False
         self.sounds = True
+        self.sounds_volume = 25  # Number from 1 to 100
+
         self.WIDTH = 1080
         self.HEIGHT = 720
         self.FPS = 30

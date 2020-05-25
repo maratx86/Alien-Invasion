@@ -41,14 +41,17 @@ class Stat():
         if num > self.max_level: self.max_level = num
 
     def plus_temp(self):
+        print(self.temp_score)
         result = 0
-        for i in self.temp_score():
+        for i in self.temp_score:
             result += i
         return result
 
     def rewrite_file(self, null = False):
 
         help_flags = ['score', 'max_score', 'levels', 'max_level']
+        array_flags = ['score', 'levels']
+        int_flags = [ 'max_score', 'levels', 'max_level']
         f = codecs.open('statistic.py', 'r', 'utf-8')
         data = f.read()
         f.close()
@@ -64,21 +67,30 @@ class Stat():
                 if temp_line_2[1] in help_flags: 
                     if temp_line_2[1] == 'score':
                         line = line.split(' = ')
-                        if len(line) > 1: line = '{} = {}'.format(line[0], self.score)
+                        if len(line) > 1:
+                            if null: line = '{} = {}'.format(line[0], [])
+                            else: line = '{} = {}'.format(line[0], self.score)
                         else: line = line[0]
                     elif temp_line_2[1] == 'max_score':
                         line = line.split(' = ')
-                        if len(line) > 1: line = '{} = {}'.format(line[0], self.max_score)
+                        if len(line) > 1:
+                            if null: line = '{} = {}'.format(line[0], 0)
+                            else: line = '{} = {}'.format(line[0], self.max_score)
                         else: line = line[0]
                     elif temp_line_2[1] == 'levels':
                         line = line.split(' = ')
-                        if len(line) > 1: line = '{} = {}'.format(line[0], self.levels)
+                        if len(line) > 1:
+                            if null: line = '{} = {}'.format(line[0], [])
+                            else: line = '{} = {}'.format(line[0], self.levels)
                         else: line = line[0]
                     elif temp_line_2[1] == 'max_level':
                         line = line.split(' = ')
-                        if len(line) > 1: line = '{} = {}'.format(line[0], self.max_level)
+                        if len(line) > 1:
+                            if null: line = '{} = {}'.format(line[0], 0)
+                            else: line = '{} = {}'.format(line[0], self.max_level)
                         else: line = line[0]
-                    print(line)
+                    else:
+                        print(line)
             if line != '' : new_data += line + '\n'
         if past_data != new_data:
             f = codecs.open('statistic.py', 'w', 'utf-8')
