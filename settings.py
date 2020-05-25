@@ -32,6 +32,13 @@ class StatisticSettings:
         self.colour_background = settings.colours.PeachPuff
 
 
+class StartSettings:
+    def __init__(self):
+        self.falling_bullet_speed = 5
+        self.falling_object_speed = 5
+        self.character_speed = 5
+
+
 class Settings:
     def __init__(self):
         self.game_name = 'Alien Invasion'
@@ -57,3 +64,5 @@ class Settings:
         self.statistic = StatisticSettings(self)
 
         self.files = Files()
+
+        self.start = StartSettings()

@@ -8,8 +8,7 @@ settings = additional.check_settings()
 class ShellObject(pygame.sprite.Sprite):
 
     def __init__(self, shell_object_img, character):
-
-        self.shell_speed = 7
+        self.shell_speed = settings.start.falling_bullet_speed
         super().__init__()
         self.image = shell_object_img
         self.image.set_colorkey(settings.colours.transparency)

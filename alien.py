@@ -93,12 +93,9 @@ def game_making(mode):
     count_of_collision = 0
     action_from_obj = False
 
-
     class FallObject(pygame.sprite.Sprite):
-        falling_speed = 5
-
         def __init__(self, fall_object_img, falling_speed = 5, action_speed = 5,  num_w = 0, row = 0):
-            self.falling_speed = falling_speed
+            self.falling_speed = settings.start.falling_object_speed
             self.action_speed = action_speed
             self.image = fall_object_img
             super().__init__()
@@ -135,10 +132,6 @@ def game_making(mode):
                 character.lives = 0
 
             if death_flag: self.kill()
-    
-    def make_harder():
-        nonlocal falling_speed
-        falling_speed += 1
 
     def generate_wariors(test = False, level = 0):
         nonlocal number_of_row, number_of_war

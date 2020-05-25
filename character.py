@@ -56,13 +56,13 @@ class Character(pygame.sprite.Sprite):
 
     def move(self, direction):
         if direction == "Left":
-            self.rect.x -= 5
+            self.rect.x -= settings.start.character_speed
             self.image = self.character_left_img
-            self.image.set_colorkey((0, 0, 0))
+            self.image.set_colorkey(settings.colours.transparency)
         if direction == "Right":
-            self.rect.x += 5
+            self.rect.x += settings.start.character_speed
             self.image = self.character_right_img
-            self.image.set_colorkey((0, 0, 0))
+            self.image.set_colorkey(settings.colours.transparency)
         if direction == "Jump Up":
             self.rect.y -= 4
         if direction == "Jump Down":
