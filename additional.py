@@ -1,6 +1,6 @@
 import os
 import codecs
-
+from settings import Settings
 
 '''
 This module using for additional functions and contain this functions
@@ -9,7 +9,7 @@ This module using for additional functions and contain this functions
     directory_finder
         return you dictionary with all necessary paths
     check_settings
-        import all necessary data from "settings" file
+        import all necessary data from settings lib
 '''
 
 
@@ -72,37 +72,12 @@ directories = directory_finder()
 temp_dir = directories['temp_dir']
 
 
-def check_settings():
-    f = open('settings')
-    data = f.read()
-    f.close()
-    data = data.split('\n')
-
-    keys_name = ['save_stat', 'SOUND', 'WIDTH', 'HEIGHT', 'FPS']
-    settings_dict = {}
-    for i in range(len(data)):
-        temp = data[i].split(' ')
-        first_word = temp[0]
-        if data[i] != '':
-            if data[i].split(' ')[-1] == 'Yes': settings_dict[keys_name[i]] = True
-            else: settings_dict[keys_name[i]] = False
-            if first_word in keys_name:
-                for one in keys_name:
-                    if one == first_word:
-                        num = temp[-1]
-                        if check_int(num): settings_dict[first_word] = int(num)
-                        # elif check_bool(num) != None: check_bool(num)
-                        else: print('Settings not correct')
-
-    return settings_dict
-
-
 def write_temp_file(file_name, *args):
     global temp_dir
     new_data = ''
     for arg in args: new_data += '{}\n'.format(arg)
     new_data = new_data.strip('\n')
-    # file_name = 'count_of_shell.ai'
+
     f = codecs.open(temp_dir + file_name, 'w', 'utf-8')
     f.write(new_data)
     f.close()
@@ -111,7 +86,6 @@ def write_temp_file(file_name, *args):
 def read_temp_file(file_name):
     global temp_dir
 
-    # file_name = 'count_of_shell.ai'
     f = codecs.open(temp_dir + file_name, 'r', 'utf-8')
     data = f.read()
     f.close()
@@ -119,5 +93,8 @@ def read_temp_file(file_name):
     for line in data.split('\n'):
         if check_int(line): line = int(line)
         if line != '': new_data.append(line)
-
     return new_data
+
+
+def check_settings():
+    return Settings()

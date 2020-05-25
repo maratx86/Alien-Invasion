@@ -1,4 +1,8 @@
 import pygame
+import additional
+
+
+settings = additional.check_settings()
 
 
 class Character(pygame.sprite.Sprite):
@@ -21,32 +25,29 @@ class Character(pygame.sprite.Sprite):
             For changing character`s image
     '''
 
-    def __init__(self, level, character_right_img, character_left_img, character_death_img, Character_position, WIDTH,
-                 HEIGHT, max_count_of_shells):
+    def __init__(self, level, character_right_img, character_left_img, character_death_img):
         self.jumping_range = 30
         self.character_right_img = character_right_img
         self.character_left_img = character_left_img
         self.character_death_img = character_death_img
         super().__init__()
         self.image = character_right_img
-        self.image.set_colorkey((0, 0, 0))
+        self.image.set_colorkey(settings.colours.transparency)
         self.mask = pygame.mask.from_surface(self.image)
         self.rect = self.image.get_rect()
-        self.rect.center = Character_position
+        self.rect.center = settings.character_position
         self.lives = 1
-        self.WIDTH = WIDTH
-        self.HEIGHT = HEIGHT
         self.flag_int_shell = 0
-        self.max_count_of_shells = max_count_of_shells
+        self.max_count_of_shells = settings.max_count_of_shells
 
         self.level = level
         self.killed_objects = 0
 
     def update(self):
-        if self.rect.left >= self.WIDTH:
+        if self.rect.left >= settings.WIDTH:
             self.rect.right = 0
         if self.rect.right < 0:
-            self.rect.left = self.WIDTH
+            self.rect.left = settings.WIDTH
 
         if pygame.key.get_pressed()[pygame.K_RIGHT]:
             self.go_right()
@@ -85,4 +86,4 @@ class Character(pygame.sprite.Sprite):
 
     def death(self):
         self.image = self.character_death_img
-        self.image.set_colorkey((0, 0, 0))
+        self.image.set_colorkey(settings.colours.transparency)

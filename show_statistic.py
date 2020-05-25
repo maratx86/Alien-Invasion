@@ -1,4 +1,5 @@
 import pygame
+import additional
 from os import environ
 
 WHITE = (255, 255, 255)
@@ -6,20 +7,21 @@ BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
-PeachPuff = (255, 218, 185)
+
+settings = additional.check_settings()
 
 
 class Column(pygame.sprite.Sprite):
     '''
     This class for creating columns
     '''
-    def __init__(self, x, height, HEIGHT, skip, colour):
-        self.width = 5
+    def __init__(self, x, height, colour):
+        self.width = settings.statistic.width
         super().__init__()
         self.image = pygame.Surface((self.width, height))
         self.image.fill(colour)
         self.rect = self.image.get_rect()
-        self.rect.center = (x, HEIGHT - skip - height//2)
+        self.rect.center = (x, settings.statistic.HEIGHT - settings.statistic.skip_edge - height//2)
 
 
 class ShowStat():
@@ -30,20 +32,16 @@ class ShowStat():
     def __init__(self):
         self.self = 5
 
-    def show(self, stat, WIDTH, HEIGHT):
+    def show(self, stat):
         environ['SDL_VIDEO_CENTERED'] = '1'
-        FPS = 30
-
         pygame.init()
         pygame.mixer.init()
-        screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        screen = pygame.display.set_mode((settings.statistic.WIDTH, settings.statistic.HEIGHT))
         pygame.display.set_caption("Alien Invasion >>> Statistics")
         clock = pygame.time.Clock()
 
-        skip = 20
-
-        work_HEIGHT = HEIGHT - 2*skip
-        work_WIDTH = WIDTH - 2*skip
+        work_HEIGHT = settings.statistic.HEIGHT - 2 * settings.statistic.skip_edge
+        work_WIDTH = settings.statistic.WIDTH - 2 * settings.statistic.skip_edge
 
         number_of_score = len(stat.score)
         _one_ = work_HEIGHT / stat.max_score
@@ -57,8 +55,10 @@ class ShowStat():
         addit = _skip_column_ // 2
 
         for i in range(number_of_score):
-            col_1 = Column(int(skip + _skip_column_ * i + addit), int(stat.score[i] * _one_), HEIGHT, skip, BLACK)
-            col_2  = Column(int(skip + _skip_column_ * i + addit + 7), int(stat.levels[i] * _one_level_), HEIGHT, skip, GREEN)
+            col_1 = Column(int(settings.statistic.skip_edge + _skip_column_ * i + addit),
+                           int(stat.score[i] * _one_), settings.statistic.colour_column_score)
+            col_2  = Column(int(settings.statistic.skip_edge + _skip_column_ * i + addit + 7),
+                            int(stat.levels[i] * _one_level_), settings.statistic.colour_column_level)
             sprites_of_score.add(col_1)
             sprites_of_level.add(col_2)
 
@@ -67,12 +67,12 @@ class ShowStat():
 
         running = True
         while running:
-            clock.tick(FPS)
+            clock.tick(settings.FPS)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
 
-            screen.fill(PeachPuff)
+            screen.fill(settings.statistic.colour_background)
 
             all_sprites.draw(screen)
             pygame.display.flip()

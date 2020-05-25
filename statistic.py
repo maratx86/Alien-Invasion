@@ -21,9 +21,9 @@ class Stat():
     '''
     def __init__(self):
         self.temp_score = []
-        self.score = [1993, 1668, 2329, 3096, 1677, 2287]
+        self.score = [1993, 1668, 2329, 3096, 1677, 2287, 2622]
         self.max_score = 3096
-        self.levels = [33, 27, 35, 31, 31, 36]
+        self.levels = [33, 27, 35, 31, 31, 36, 28]
         self.max_level = 36
 
     def add_temp_score(self, num):

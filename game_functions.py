@@ -4,35 +4,23 @@ import random
 import additional
 from alien import ShellObject, game_making
 
-WIDTH = 1080
-HEIGHT = 720
-FPS = 30
+settings = additional.check_settings()
 
-max_count_of_shells = 5
-
-settings_dict = additional.check_settings()
-for key, value in settings_dict.items():
-    if key == 'save_stat': save_stat_flag = value
-    elif key == 'WIDTH' : WIDTH = value
-    elif key == 'HEIGHT' : HEIGHT = value
-    elif key == 'FPS' : FPS = value
-character_position = (WIDTH // 2, 100)
-
-
-def check_event(event, stat, settings_dict, freaze_game, pause_flag, death_flag, character, start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE):
+def check_event(event, stat, freaze_game, pause_flag, death_flag, character,
+                start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE):
     ['running', 'character', 'freaze_game', 'death_flag', 'shell_objects', 'stat']
     return_dict = {}
     if event.type == pygame.QUIT:
         # ~ running = False
         return_dict['running'] = False
-        if settings_dict['save_stat']: stat.rewrite_file()
+        if settings.saving_after_quit: stat.rewrite_file()
         else: print('Your flag save statistic is turned off, your progress was not saved')
 
     if freaze_game:
         if pause_flag:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    return_dict['current_score'] = 0
+                    # return_dict['current_score'] = 0
                     return_dict['pause_flag'] = False
                     return_dict['freaze_game'] = False
                     print('unpaused game')
@@ -40,15 +28,14 @@ def check_event(event, stat, settings_dict, freaze_game, pause_flag, death_flag,
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_F5:
                     ss = show_statistic.ShowStat()
-                    ss.show(stat, WIDTH // 3, HEIGHT)
+                    ss.show(stat)
                     stat.rewrite_file()
                     game_making(random.randint(1, 3))
                 if event.key == pygame.K_SPACE:
                     start_game_time = pygame.time.get_ticks()
                     character.lives = 1
                     pygame.mixer.music.unpause()
-                    character.rect.center = character_position
-                    # ~ freaze_game = False
+                    character.rect.center = settings.character_position
                     return_dict['freaze_game'] = False
                     return_dict['character'] = character
             if event.type == pygame.MOUSEBUTTONDOWN:
@@ -56,7 +43,7 @@ def check_event(event, stat, settings_dict, freaze_game, pause_flag, death_flag,
                     start_game_time = pygame.time.get_ticks()
                     character.lives = 1
                     pygame.mixer.music.unpause()
-                    character.rect.center = character_position
+                    character.rect.center = settings.character_position
                     # ~ freaze_game = False
                     return_dict['freaze_game'] = False
                     return_dict['character'] = character
@@ -74,7 +61,7 @@ def check_event(event, stat, settings_dict, freaze_game, pause_flag, death_flag,
                     return_dict['character'] = character
                 if event.key == pygame.K_SPACE:
                     count_of_shells = additional.read_temp_file('count_of_shell.ai')[0]
-                    if count_of_shells < max_count_of_shells:
+                    if count_of_shells < settings.max_count_of_shells:
                         count_of_shells += 1
                         additional.write_temp_file('count_of_shell.ai', count_of_shells)
                         shell_object = ShellObject(shell_object_img, character)
