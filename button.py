@@ -39,11 +39,8 @@ class Button():
         return surface
 
     def pressed(self, mouse):
-        if mouse[0] > self.rect.topleft[0] \
-                and mouse[1] > self.rect.topleft[1] \
-                and mouse[0] < self.rect.bottomright[0] \
-                and mouse[1] < self.rect.bottomright[1]:
-            print("Нажата")
+        if mouse[0] > self.rect.topleft[0] and mouse[1] > self.rect.topleft[1] and mouse[0] < self.rect.bottomright[0] and mouse[1] < self.rect.bottomright[1]:
+            print('Clicked')
             return True
         else:
             return False

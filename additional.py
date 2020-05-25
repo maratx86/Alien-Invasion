@@ -1,4 +1,5 @@
 import os
+import codecs
 
 
 '''
@@ -18,6 +19,15 @@ def check_int(num):
         return True
     except ValueError:
         return False
+
+
+def check_bool(string):
+    find = None
+    if string.lower() == 'true' or string.lower() == 'yes':
+        find = True
+    elif string.lower() == 'false' or string.lower() == 'no':
+        find = False
+    return find
 
 
 def directory_finder():
@@ -44,6 +54,7 @@ def directory_finder():
         temp_dir = os.getenv('TEMP')
         if temp_dir == None: temp_dir = os.getenv('TMP')
         temp_dir += slash
+
     directories = {
         "os":_os_,
         "platform": platform,
@@ -57,13 +68,17 @@ def directory_finder():
     return directories
 
 
+directories = directory_finder()
+temp_dir = directories['temp_dir']
+
+
 def check_settings():
     f = open('settings')
     data = f.read()
     f.close()
     data = data.split('\n')
 
-    keys_name = ['save_stat', 'WIDTH', 'HEIGHT', 'FPS']
+    keys_name = ['save_stat', 'SOUND', 'WIDTH', 'HEIGHT', 'FPS']
     settings_dict = {}
     for i in range(len(data)):
         temp = data[i].split(' ')
@@ -76,7 +91,33 @@ def check_settings():
                     if one == first_word:
                         num = temp[-1]
                         if check_int(num): settings_dict[first_word] = int(num)
+                        # elif check_bool(num) != None: check_bool(num)
                         else: print('Settings not correct')
 
     return settings_dict
 
+
+def write_temp_file(file_name, *args):
+    global temp_dir
+    new_data = ''
+    for arg in args: new_data += '{}\n'.format(arg)
+    new_data = new_data.strip('\n')
+    # file_name = 'count_of_shell.ai'
+    f = codecs.open(temp_dir + file_name, 'w', 'utf-8')
+    f.write(new_data)
+    f.close()
+
+
+def read_temp_file(file_name):
+    global temp_dir
+
+    # file_name = 'count_of_shell.ai'
+    f = codecs.open(temp_dir + file_name, 'r', 'utf-8')
+    data = f.read()
+    f.close()
+    new_data = []
+    for line in data.split('\n'):
+        if check_int(line): line = int(line)
+        if line != '': new_data.append(line)
+
+    return new_data
