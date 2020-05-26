@@ -33,6 +33,7 @@ if check_lib():
     import os
     import additional
     import game_functions
+    import create_animation_code
 else:
     print("\nSome library is missing...\a")
     raise SystemExit(10)
@@ -59,6 +60,13 @@ def game_making(mode):
     pygame.display.set_caption(game_name)
     screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
     clock = pygame.time.Clock()
+
+    loading_font = pygame.font.Font(None, 75)
+    loading_table = loading_font.render(settings.loading_text, 1, settings.colours.loading)
+    loading_coord = loading_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2))
+    screen.fill(settings.colours.DarkGrey)
+    screen.blit(loading_table, loading_coord)
+    pygame.display.flip()
 
     character_left_img = pygame.image.load(directories["media_dir"] + "{}_character.png".format(mode)).convert()
     character_right_img = pygame.image.load(directories["media_dir"] + "{}_character.png".format(mode)).convert()
@@ -173,7 +181,13 @@ def game_making(mode):
     shell_objects = pygame.sprite.Group()
 
     stat = Stat()
-    
+
+    if settings.start.show_animation:
+        factor = 100
+        pause_animation_1 = create_animation_code.create_pause_object(settings.WIDTH//4 - factor, settings.HEIGHT//4)
+        pause_animation_2 = create_animation_code.create_pause_object(3*settings.WIDTH // 4 + factor, 3*settings.HEIGHT // 4)
+        pause_objects = pygame.sprite.Group(pause_animation_1, pause_animation_2)
+
     kill_fall_object = 0
     
     number_of_war = settings.WIDTH // 200
@@ -361,11 +375,11 @@ def game_making(mode):
                 second_font = pygame.font.Font(None, 50)
                 level_table = second_font.render('Level now : {}'.format(character.level), 1, settings.colours.MistyRose)
                 level_coord = level_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2 + 150))
-
+                if settings.start.show_animation: pause_objects.update()
                 screen.blit(background_img, (0, 0))
                 all_sprites.draw(screen)
                 screen.blit(blackscreen, (0, 0))
-
+                if settings.start.show_animation: pause_objects.draw(screen)
                 screen.blit(pause_table, pause_coord)
                 screen.blit(score_table, score_coord)
                 screen.blit(level_table, level_coord)

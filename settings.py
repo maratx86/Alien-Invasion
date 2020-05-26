@@ -21,6 +21,8 @@ class Colours:
         self.DeepPink = (255, 20, 147)
         self.LightSalmon = (255, 160, 122)
         self.Crimson = (220, 20, 60)
+        self.DarkGrey = (24, 24, 24)
+        self.loading = (255, 160, 122)
 
         self.transparency = self.black
 
@@ -46,6 +48,7 @@ class StartSettings:
         self.action_object_speed = 5
         self.character_speed = 5
         self.increaze_falling_speed = True
+        self.show_animation = True  # The game will load longer
 
 
 class Settings:
@@ -67,6 +70,7 @@ class Settings:
         self.start_button_height = 100
         self.start_button_text = 'Start game'
         self.pause_button_text = 'The game was paused'
+        self.loading_text = 'Game is loading...'
 
         self.character_position = (self.WIDTH // 2, 100)
         self.character_death_time = 3  # Time how much the character will jump after death (seconds)

@@ -155,3 +155,76 @@
 [2020.05.26 17:04:20] Game window was opened
 [2020.05.26 17:04:21] Open the statistics window
 [2020.05.26 17:04:23] Game was closed after showing statistics
+[2020.05.26 21:02:37] Attempt to open main file from non-main
+[2020.05.26 21:02:42] Game window was opened
+[2020.05.26 21:02:45] The game is paused (Score: 11)
+[2020.05.26 21:05:04] Attempt to open main file from non-main
+[2020.05.26 21:08:13] Attempt to open main file from non-main
+[2020.05.26 21:09:31] Attempt to open main file from non-main
+[2020.05.26 21:09:36] Game window was opened
+[2020.05.26 21:10:42] Attempt to open main file from non-main
+[2020.05.26 21:10:46] Game window was opened
+[2020.05.26 21:10:49] The game is paused (Score: 13)
+[2020.05.26 21:11:48] Attempt to open main file from non-main
+[2020.05.26 21:11:52] Game window was opened
+[2020.05.26 21:11:54] The game is paused (Score: 14)
+[2020.05.26 21:13:01] Attempt to open main file from non-main
+[2020.05.26 21:13:05] Game window was opened
+[2020.05.26 21:13:07] The game is paused (Score: 9)
+[2020.05.26 21:13:46] Attempt to open main file from non-main
+[2020.05.26 21:13:50] Game window was opened
+[2020.05.26 21:15:23] Attempt to open main file from non-main
+[2020.05.26 21:15:30] Game window was opened
+[2020.05.26 21:15:33] The game is paused (Score: 25)
+[2020.05.26 21:22:23] Attempt to open main file from non-main
+[2020.05.26 21:22:31] Game window was opened
+[2020.05.26 21:22:59] Attempt to open main file from non-main
+[2020.05.26 21:23:01] Game window was opened
+[2020.05.26 21:23:11] The game is paused (Score: 63)
+[2020.05.26 21:23:29] Attempt to open main file from non-main
+[2020.05.26 21:23:37] Game window was opened
+[2020.05.26 21:23:53] The game is paused (Score: 61)
+[2020.05.26 21:24:04] Game resumed with a score of 61)
+[2020.05.26 21:24:21] The Player has reached level 2
+[2020.05.26 21:24:42] The Player has reached level 3
+[2020.05.26 21:24:48] The Player has reached level 4
+[2020.05.26 21:27:03] Attempt to open main file from non-main
+[2020.05.26 21:27:10] Game window was opened
+[2020.05.26 21:27:15] The game is paused (Score: 24)
+[2020.05.26 21:27:50] Game resumed with a score of 24)
+[2020.05.26 21:27:51] The game is paused (Score: 29)
+[2020.05.26 21:28:26] Attempt to open main file from non-main
+[2020.05.26 21:28:27] Game window was opened
+[2020.05.26 21:28:40] The game is paused (Score: 78)
+[2020.05.26 21:37:38] Attempt to open main file from non-main
+[2020.05.26 21:37:40] Game window was opened
+[2020.05.26 21:37:55] Attempt to open main file from non-main
+[2020.05.26 21:38:02] Game window was opened
+[2020.05.26 21:38:33] Attempt to open main file from non-main
+[2020.05.26 21:38:40] Game window was opened
+[2020.05.26 21:38:59] Attempt to open main file from non-main
+[2020.05.26 21:39:11] Attempt to open main file from non-main
+[2020.05.26 21:39:38] Attempt to open main file from non-main
+[2020.05.26 21:41:58] Attempt to open main file from non-main
+[2020.05.26 21:42:06] Game window was opened
+[2020.05.26 21:46:54] Attempt to open main file from non-main
+[2020.05.26 21:47:01] Game window was opened
+[2020.05.26 21:50:48] Attempt to open main file from non-main
+[2020.05.26 21:50:55] Game window was opened
+[2020.05.26 21:51:27] Attempt to open main file from non-main
+[2020.05.26 21:51:34] Game window was opened
+[2020.05.26 21:54:11] Attempt to open main file from non-main
+[2020.05.26 21:54:18] Game window was opened
+[2020.05.26 21:55:05] Attempt to open main file from non-main
+[2020.05.26 21:55:12] Game window was opened
+[2020.05.26 21:55:19] Attempt to open main file from non-main
+[2020.05.26 21:55:26] Game window was opened
+[2020.05.26 21:55:47] Attempt to open main file from non-main
+[2020.05.26 21:55:54] Game window was opened
+[2020.05.26 21:56:15] The game is paused (Score: 21)
+[2020.05.26 21:59:18] Attempt to open main file from non-main
+[2020.05.26 21:59:25] Game window was opened
+[2020.05.26 21:59:27] The game is paused (Score: 12)
+[2020.05.26 22:01:06] Attempt to open main file from non-main
+[2020.05.26 22:01:13] Game window was opened
+[2020.05.26 22:01:16] The game is paused (Score: 13)

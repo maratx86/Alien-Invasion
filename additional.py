@@ -2,7 +2,7 @@ import os
 import codecs
 import random
 from settings import Settings
-from  time import strftime
+from time import strftime
 
 
 '''
@@ -40,6 +40,7 @@ def directory_finder():
         _os_ = "windows"
         main_dir = os.getcwd() + '\\'
         media_dir = main_dir + 'media\\'
+        animation_dir = media_dir + 'animation\\'
         mode_dir = media_dir + 'mode\\'
         slash = '\\'
         temp_dir = os.getenv('TEMP')
@@ -50,6 +51,7 @@ def directory_finder():
         _os_ = "linux or MacOS"
         main_dir = os.getcwd() + '/'
         media_dir = main_dir + 'media/'
+        animation_dir = media_dir + 'animation/'
         mode_dir = media_dir + 'mode/'
         slash = '/'
         temp_dir = os.getenv('TEMP')
@@ -63,6 +65,7 @@ def directory_finder():
         "temp_dir": temp_dir,
         "main_dir": main_dir,
         "media_dir": media_dir,
+        'animation_dir': animation_dir,
         "mode_dir": mode_dir
     }
     return directories
