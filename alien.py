@@ -71,23 +71,29 @@ def game_making(mode):
 
     background_music = directories["media_dir"] + "{}_background_music.mp3".format(mode)
 
+    music_volume = settings.sounds_volume / 100
+
     pygame.mixer.init()
     pygame.mixer.music.load(background_music)
     pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(settings.sounds_volume/100)
+    pygame.mixer.music.set_volume(music_volume)
     pygame.mixer.music.pause()
     pygame.event.wait()
 
     hit_sound = directories["media_dir"] + "hit.ogg"
     hit_sound = pygame.mixer.Sound(hit_sound)
+    hit_sound.set_volume(0.75*music_volume)
     
     complete_sound = directories["media_dir"] + "complete.ogg"
     complete_sound = pygame.mixer.Sound(complete_sound)
+    complete_sound.set_volume(0.75 * music_volume)
     
     end_music = directories["media_dir"] + "{}_end_music.ogg".format(mode)
     end_music = pygame.mixer.Sound(end_music)
+    end_music.set_volume(0.75 * music_volume)
 
     level_mode = 0
+    last_shell = 0
     CURRENT_SCORE = 0
     falling_speed = 5
     action_speed = 5
@@ -192,7 +198,9 @@ def game_making(mode):
         
         if level != 0:
             count_of_wariors = generate_wariors(False, level)
+            additional.write_log_file('The Player has reached level {}'.format(level))
             return count_of_wariors
+        else: additional.write_log_file('Game was started with 0 level')
 
     death_flag = False
     running = True
@@ -213,7 +221,8 @@ def game_making(mode):
     advise_coord = advise_table.get_rect(center=(settings.WIDTH - 100, settings.HEIGHT - 10))
 
     def change_smth(return_dict):
-        nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, CURRENT_SCORE, pause_flag, start_game_time
+        nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, \
+            CURRENT_SCORE, pause_flag, start_game_time, last_shell
         for var, val in return_dict.items():
             if var == 'running': running = val
             elif var == 'character': character = val
@@ -224,17 +233,17 @@ def game_making(mode):
             elif var == 'all_sprites': all_sprites = val
             elif var == 'stat': stat = val
             elif var == 'start_game_time': start_game_time = val
-            elif var == 'current_score':
-                start_game_time = pygame.time.get_ticks() - val * 100
+            elif var == 'current_score': start_game_time = pygame.time.get_ticks() - val * 100
+            elif var == 'last_shell': last_shell = val
 
-    additional.write_log_file('Start game window')
+    additional.write_log_file('Game window was opened')
 
     while running:
         clock.tick(settings.FPS)
         for event in pygame.event.get():
             return_dict = game_functions.check_event(pygame, event, stat, freaze_game,
                                                      pause_flag, death_flag, character, start_button, shell_objects,
-                                                     all_sprites, shell_object_img, CURRENT_SCORE, start_game_time)
+                                                     all_sprites, shell_object_img, CURRENT_SCORE, last_shell)
             if return_dict != {}: change_smth(return_dict)
 
         if not freaze_game:
@@ -300,6 +309,7 @@ def game_making(mode):
                     death_flag = True
                     if character.lives == 0:
                         reason_pic = reason_pic_died
+                        additional.write_log_file('Game over at level {}'.format(character.level))
 
             all_sprites.update()
             if not death_flag:

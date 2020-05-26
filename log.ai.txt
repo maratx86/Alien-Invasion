@@ -1,0 +1,80 @@
+[2020.05.26 15:05:34] Attempt to open main file from non-main
+[2020.05.26 15:05:35] Start game window
+[2020.05.26 15:10:27] Open the statistics window
+[2020.05.26 15:10:36] Start game window
+[2020.05.26 15:18:56] Attempt to open main file from non-main
+[2020.05.26 15:18:57] Start game window
+[2020.05.26 15:19:56] Attempt to open main file from non-main
+[2020.05.26 15:19:57] Start game window
+[2020.05.26 15:20:33] Attempt to open main file from non-main
+[2020.05.26 15:20:34] Start game window
+[2020.05.26 15:21:28] Attempt to open main file from non-main
+[2020.05.26 15:21:30] Start game window
+[2020.05.26 15:22:11] Attempt to open main file from non-main
+[2020.05.26 15:22:12] Start game window
+[2020.05.26 15:22:34] Attempt to open main file from non-main
+[2020.05.26 15:22:36] Start game window
+[2020.05.26 15:22:46] Attempt to open main file from non-main
+[2020.05.26 15:22:48] Start game window
+[2020.05.26 15:23:05] Attempt to open main file from non-main
+[2020.05.26 15:23:06] Start game window
+[2020.05.26 15:23:51] Attempt to open main file from non-main
+[2020.05.26 15:23:53] Start game window
+[2020.05.26 15:25:35] Attempt to open main file from non-main
+[2020.05.26 15:25:36] Start game window
+[2020.05.26 15:31:30] Attempt to open main file from non-main
+[2020.05.26 15:31:32] Start game window
+[2020.05.26 15:32:08] Attempt to open main file from non-main
+[2020.05.26 15:32:10] Start game window
+[2020.05.26 15:33:01] Attempt to open main file from non-main
+[2020.05.26 15:33:03] Start game window
+[2020.05.26 15:34:38] Attempt to open main file from non-main
+[2020.05.26 15:34:40] Start game window
+[2020.05.26 15:40:26] Attempt to open main file from non-main
+[2020.05.26 15:40:27] Start game window
+[2020.05.26 15:40:43] Attempt to open main file from non-main
+[2020.05.26 15:40:44] Start game window
+[2020.05.26 15:43:07] Attempt to open main file from non-main
+[2020.05.26 15:43:09] Start game window
+[2020.05.26 15:43:38] Attempt to open main file from non-main
+[2020.05.26 15:43:40] Start game window
+[2020.05.26 15:47:07] Open the statistics window
+[2020.05.26 15:47:19] Start game window
+[2020.05.26 15:47:20] Game was closed after showing statistics
+[2020.05.26 15:47:23] Attempt to open main file from non-main
+[2020.05.26 15:47:25] Start game window
+[2020.05.26 15:47:25] Open the statistics window
+[2020.05.26 15:47:33] Start game window
+[2020.05.26 15:47:35] Game was closed after showing statistics
+[2020.05.26 15:58:03] Attempt to open main file from non-main
+[2020.05.26 15:58:04] Game window was opened
+[2020.05.26 15:58:10] The game is paused (Score: 33)
+[2020.05.26 15:58:15] Game resumed with a score of 33)
+[2020.05.26 15:58:23] The Player has reached level 2
+[2020.05.26 15:58:33] The Player has reached level 3
+[2020.05.26 15:58:44] The Player has reached level 4
+[2020.05.26 15:58:55] The Player has reached level 5
+[2020.05.26 15:59:06] The Player has reached level 6
+[2020.05.26 15:59:16] The Player has reached level 7
+[2020.05.26 15:59:21] The Player has reached level 8
+[2020.05.26 15:59:25] The Player has reached level 9
+[2020.05.26 15:59:30] The Player has reached level 10
+[2020.05.26 15:59:38] The Player has reached level 11
+[2020.05.26 15:59:46] The Player has reached level 12
+[2020.05.26 15:59:52] The Player has reached level 13
+[2020.05.26 15:59:57] The Player has reached level 14
+[2020.05.26 16:00:03] The Player has reached level 15
+[2020.05.26 16:00:07] The Player has reached level 16
+[2020.05.26 16:00:13] The Player has reached level 17
+[2020.05.26 16:00:20] The Player has reached level 18
+[2020.05.26 16:00:25] The Player has reached level 19
+[2020.05.26 16:00:32] The Player has reached level 20
+[2020.05.26 16:00:38] The Player has reached level 21
+[2020.05.26 16:00:42] The Player has reached level 22
+[2020.05.26 16:00:45] The Player has reached level 23
+[2020.05.26 16:00:48] The Player has reached level 24
+[2020.05.26 16:00:50] The Player has reached level 25
+[2020.05.26 16:00:56] The Player has reached level 26
+[2020.05.26 16:01:00] The Player has reached level 27
+[2020.05.26 16:01:02] The Player has reached level 28
+[2020.05.26 16:01:08] Game over at level 28

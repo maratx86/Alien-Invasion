@@ -8,7 +8,7 @@ settings = additional.check_settings()
 
 
 def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, character,
-                start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE, start_game_time):
+                start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE, last_shell):
     return_dict = {}
     if event.type == pygame.QUIT:
         return_dict['running'] = False
@@ -22,7 +22,8 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
                     return_dict['current_score'] = stat.plus_temp()
                     return_dict['pause_flag'] = False
                     return_dict['freaze_game'] = False
-                    print('Unpaused game')
+                    additional.write_log_file('Game resumed with a score of {})'.format(CURRENT_SCORE))
+
         else:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_F5:
@@ -53,6 +54,19 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
         if death_flag:
             0
         else:
+            if pygame.key.get_pressed()[pygame.K_SPACE]:
+                now = pygame.time.get_ticks()
+                count_of_shells = additional.read_temp_file(settings.files.temp_count_of_shells)[0]
+                if count_of_shells < settings.max_count_of_shells and (now - last_shell)//3 > 1:
+                    last_shell = pygame.time.get_ticks()
+                    count_of_shells += 1
+                    additional.write_temp_file(settings.files.temp_count_of_shells, count_of_shells)
+                    shell_object = ShellObject(shell_object_img, character)
+                    shell_objects.add(shell_object)
+                    all_sprites.add(shell_objects)
+                    return_dict['shell_objects'] = shell_objects
+                    return_dict['all_sprites'] = all_sprites
+                    return_dict['last_shell'] = last_shell
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     character.go_left()
@@ -60,18 +74,9 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
                 elif event.key == pygame.K_RIGHT:
                     character.go_right()
                     return_dict['character'] = character
-                elif event.key == pygame.K_SPACE:
-                    count_of_shells = additional.read_temp_file(settings.files.temp_count_of_shells)[0]
-                    if count_of_shells < settings.max_count_of_shells:
-                        count_of_shells += 1
-                        additional.write_temp_file(settings.files.temp_count_of_shells, count_of_shells)
-                        shell_object = ShellObject(shell_object_img, character)
-                        shell_objects.add(shell_object)
-                        all_sprites.add(shell_objects)
-                        return_dict['shell_objects'] = shell_objects
-                        return_dict['all_sprites'] = all_sprites
-                        return_dict['character'] = character
+
                 elif event.key == pygame.K_ESCAPE:
+                    additional.write_log_file('The game is paused (Score: {})'.format(CURRENT_SCORE))
                     stat.add_temp_score(CURRENT_SCORE)
                     return_dict['pause_flag'] = True
                     return_dict['freaze_game'] = True
