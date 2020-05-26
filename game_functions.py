@@ -28,10 +28,11 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_F5:
                     if stat.max_score != 0 and stat.max_level != 0:
-                        ss = show_statistic.ShowStat()
-                        ss.show(stat)
-                        game_making(random.randint(1, 3))
-                    print('You have no statistic')
+                        ss = show_statistic.ShowStat(stat)
+                        flag = ss.show(stat)
+                        if flag: game_making(random.randint(1, 3))
+                        else: additional.write_log_file('The game was closed after viewing statistics')
+                    else: print('You have no statistic')
                 elif event.key == pygame.K_SPACE:
                     start_game_time = pygame.time.get_ticks()
                     character.lives = 1

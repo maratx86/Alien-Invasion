@@ -248,7 +248,7 @@ def game_making(mode):
 
         if not freaze_game:
             action_from_obj = True
-            hits_shell = pygame.sprite.groupcollide(shell_objects, fall_objects, True, pygame.sprite.collide_mask)
+            hits_shell = pygame.sprite.groupcollide(shell_objects, fall_objects, True, True, pygame.sprite.collide_mask)
             hits_character = pygame.sprite.spritecollide(character, fall_objects, True, pygame.sprite.collide_mask)
 
             if death_flag:
@@ -309,7 +309,7 @@ def game_making(mode):
                     death_flag = True
                     if character.lives == 0:
                         reason_pic = reason_pic_died
-                        additional.write_log_file('Game over at level {}'.format(character.level))
+                        additional.write_log_file('Game over at level {}'.format(character.level + 1))
 
             all_sprites.update()
             if not death_flag:

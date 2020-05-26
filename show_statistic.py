@@ -39,13 +39,12 @@ class ShowStat():
     This class for showing statistics in pygame window
     '''
 
-    def __init__(self):
-        self.self = 5
-
-    def show(self, stat):
+    def __init__(self, stat):
         stat.rewrite_file()
         additional.write_log_file('Open the statistics window')
-        environ['SDL_VIDEO_CENTERED'] = '500'
+
+    def show(self, stat):
+        environ['SDL_VIDEO_CENTERED'] = '1'
         pygame.init()
         pygame.mixer.init()
         screen = pygame.display.set_mode((settings.statistic.WIDTH, settings.statistic.HEIGHT))
@@ -84,11 +83,16 @@ class ShowStat():
         all_sprites.add(sprites_of_cord)
 
         running = True
+        flag = True
         while running:
             clock.tick(settings.FPS)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
+                        flag = False
 
             screen.fill(settings.statistic.colour_background)
 
@@ -96,4 +100,6 @@ class ShowStat():
             pygame.display.flip()
 
         pygame.quit()
+
+        return flag
 

@@ -125,3 +125,33 @@
 [2020.05.26 16:15:19] Attempt to open main file from non-main
 [2020.05.26 16:15:20] Game window was opened
 [2020.05.26 16:15:27] The game was closed (DEL) with score 50
+[2020.05.26 16:21:09] Attempt to open main file from non-main
+[2020.05.26 16:21:10] Game window was opened
+[2020.05.26 16:21:29] The Player has reached level 2
+[2020.05.26 16:21:40] The Player has reached level 3
+[2020.05.26 16:21:45] The Player has reached level 4
+[2020.05.26 16:21:54] The Player has reached level 5
+[2020.05.26 16:22:05] The Player has reached level 6
+[2020.05.26 16:22:10] The Player has reached level 7
+[2020.05.26 16:22:18] The Player has reached level 8
+[2020.05.26 16:22:25] The Player has reached level 9
+[2020.05.26 16:22:28] The Player has reached level 10
+[2020.05.26 16:22:34] The Player has reached level 11
+[2020.05.26 16:22:45] The Player has reached level 12
+[2020.05.26 16:23:08] Game over at level 12
+[2020.05.26 16:56:41] Attempt to open main file from non-main
+[2020.05.26 16:56:43] Game window was opened
+[2020.05.26 16:56:44] Open the statistics window
+[2020.05.26 16:56:47] Game window was opened
+[2020.05.26 16:56:49] Open the statistics window
+[2020.05.26 16:56:59] Game window was opened
+[2020.05.26 16:57:01] Game was closed after showing statistics
+[2020.05.26 17:00:03] Attempt to open main file from non-main
+[2020.05.26 17:00:05] Game window was opened
+[2020.05.26 17:00:06] Open the statistics window
+[2020.05.26 17:02:12] Attempt to open main file from non-main
+[2020.05.26 17:02:14] Game window was opened
+[2020.05.26 17:04:18] Attempt to open main file from non-main
+[2020.05.26 17:04:20] Game window was opened
+[2020.05.26 17:04:21] Open the statistics window
+[2020.05.26 17:04:23] Game was closed after showing statistics
