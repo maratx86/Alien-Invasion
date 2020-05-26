@@ -57,7 +57,7 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
             if pygame.key.get_pressed()[pygame.K_SPACE]:
                 now = pygame.time.get_ticks()
                 count_of_shells = additional.read_temp_file(settings.files.temp_count_of_shells)[0]
-                if count_of_shells < settings.max_count_of_shells and (now - last_shell)//3 > 1:
+                if count_of_shells < settings.max_count_of_shells and (now - last_shell) // 100 > 1:
                     last_shell = pygame.time.get_ticks()
                     count_of_shells += 1
                     additional.write_temp_file(settings.files.temp_count_of_shells, count_of_shells)
@@ -84,6 +84,7 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
 
                 elif event.key == pygame.K_DELETE:
                     print('DEL save data')
+                    additional.write_log_file('The game was closed (DEL) with score {}'.format(CURRENT_SCORE))
                     stat.add_max_score(CURRENT_SCORE)
                     stat.add_level(character.level)
                     # ~ running = False

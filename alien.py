@@ -342,7 +342,8 @@ def game_making(mode):
                 if down_flag:
                     down_flag = False
                     down = not down
-            if (character.killed_objects == count_of_wariors or count_of_alive == 0 or action_from_obj) and not death_flag: 
+            if (character.killed_objects == count_of_wariors or count_of_alive == 0 or action_from_obj) \
+                    and not death_flag:
                 if settings.sounds: complete_sound.play()
                 character.killed_objects = 0
                 character.level += 1
