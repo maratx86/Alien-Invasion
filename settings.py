@@ -48,7 +48,15 @@ class StartSettings:
         self.action_object_speed = 5
         self.character_speed = 5
         self.increaze_falling_speed = True
+
+
+class Animation:
+    def __init__(self):
         self.show_animation = True  # The game will load longer
+
+        self.show_pause = True
+        self.show_start = False
+        self.show_edge = True
 
 
 class Settings:
@@ -71,12 +79,14 @@ class Settings:
         self.start_button_text = 'Start game'
         self.pause_button_text = 'The game was paused'
         self.loading_text = 'Game is loading...'
+        self.loading_animation_text = 'Animation for the game is loading...'
 
         self.character_position = (self.WIDTH // 2, 100)
         self.character_death_time = 3  # Time how much the character will jump after death (seconds)
-        self.max_count_of_shells = 5
+        self.max_count_of_shells = 3
 
         self.colours = Colours()
         self.statistic = StatisticSettings(self)
         self.files = Files()
         self.start = StartSettings()
+        self.animation = Animation()

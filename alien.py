@@ -47,9 +47,37 @@ directories = additional.directory_finder()
 settings.fonts = pygame.font.get_fonts()
 
 
+if settings.animation.show_animation:
+    os.environ['SDL_VIDEO_CENTERED'] = '1'
+
+    pygame.init()
+    pygame.display.set_caption(settings.game_name)
+    screen = pygame.display.set_mode((settings.WIDTH, settings.HEIGHT))
+
+    loading_font = pygame.font.Font(None, 75)
+    loading_table = loading_font.render(settings.loading_animation_text, 1, settings.colours.loading)
+    loading_coord = loading_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2))
+    screen.fill(settings.colours.DarkGrey)
+    screen.blit(loading_table, loading_coord)
+    pygame.display.flip()
+
+    factor = 100
+    pause_animation_1 = create_animation_code.create_pause_object(settings.WIDTH // 4 - factor, settings.HEIGHT // 4)
+    pause_animation_2 = create_animation_code.create_pause_object(3 * settings.WIDTH // 4 + factor,
+                                                                  3 * settings.HEIGHT // 4)
+    pause_objects = pygame.sprite.Group(pause_animation_1, pause_animation_2)
+
+    start_animation = create_animation_code.create_start_pic(settings.WIDTH // 2, settings.HEIGHT // 2)
+    start_objects = pygame.sprite.Group(start_animation)
+
+    edge_animation_1 = create_animation_code.create_edge_pic(0 + factor, settings.HEIGHT // 2)
+    edge_animation_2 = create_animation_code.create_edge_pic(settings.WIDTH - factor, settings.HEIGHT // 2, False)
+    edge_objects = pygame.sprite.Group(edge_animation_1, edge_animation_2)
+
+
 def game_making(mode):
     from statistic import Stat
-    global directories
+    global directories, pause_objects, start_objects, edge_objects
     os.environ['SDL_VIDEO_CENTERED'] = '1'
     game_name = settings.game_name
     if settings.show_sreen: game_name += ' ({}x{})'.format(settings.WIDTH, settings.HEIGHT)
@@ -182,11 +210,6 @@ def game_making(mode):
 
     stat = Stat()
 
-    if settings.start.show_animation:
-        factor = 100
-        pause_animation_1 = create_animation_code.create_pause_object(settings.WIDTH//4 - factor, settings.HEIGHT//4)
-        pause_animation_2 = create_animation_code.create_pause_object(3*settings.WIDTH // 4 + factor, 3*settings.HEIGHT // 4)
-        pause_objects = pygame.sprite.Group(pause_animation_1, pause_animation_2)
 
     kill_fall_object = 0
     
@@ -375,11 +398,11 @@ def game_making(mode):
                 second_font = pygame.font.Font(None, 50)
                 level_table = second_font.render('Level now : {}'.format(character.level), 1, settings.colours.MistyRose)
                 level_coord = level_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2 + 150))
-                if settings.start.show_animation: pause_objects.update()
+                if settings.animation.show_animation and settings.animation.show_pause: pause_objects.update()
                 screen.blit(background_img, (0, 0))
                 all_sprites.draw(screen)
                 screen.blit(blackscreen, (0, 0))
-                if settings.start.show_animation: pause_objects.draw(screen)
+                if settings.animation.show_animation and settings.animation.show_pause: pause_objects.draw(screen)
                 screen.blit(pause_table, pause_coord)
                 screen.blit(score_table, score_coord)
                 screen.blit(level_table, level_coord)
@@ -405,12 +428,21 @@ def game_making(mode):
                 screen.blit(main_score_table, (int(settings.WIDTH*0.65), settings.HEIGHT//2 - 40))
                 screen.blit(main_level_table, (int(settings.WIDTH*0.65), settings.HEIGHT//2))
 
+                if settings.animation.show_animation and settings.animation.show_start:
+                    start_objects.update()
+                    start_objects.draw(screen)
+
                 start_button = Button(screen, settings.colours.black,
                                       (settings.WIDTH - settings.start_button_width) // 2,
                                       (settings.HEIGHT - settings.start_button_height) // 2,
                                       settings.start_button_width, settings.start_button_height, 100,
                                       settings.start_button_text, settings.colours.white)
                 all_sprites.draw(screen)
+
+                if settings.animation.show_animation and settings.animation.show_edge:
+                    edge_objects.update()
+                    edge_objects.draw(screen)
+
 
         pygame.display.flip()
     pygame.quit()
