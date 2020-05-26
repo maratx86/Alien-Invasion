@@ -2,158 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="315c7895-f1cd-4a51-8ac4-d1e3bb0c0a7a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/edge/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/27.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/30.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/31.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/33.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/34.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/35.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/36.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/37.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/38.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/39.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/40.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/41.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/42.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/43.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/44.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/45.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/46.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/47.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/pause/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/start/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/start/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/start/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/media/animation/start/4.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alien.py" beforeDir="false" afterPath="$PROJECT_DIR$/alien.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_animation_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/create_animation_code.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.ai.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.ai.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/14.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/16.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/17.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/18.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/19.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/21.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/22.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/23.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/24.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/26.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/27.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/28.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/29.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/30.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/31.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/32.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/33.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/34.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/35.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/36.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/37.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/38.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/39.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/40.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/41.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/42.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/44.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/45.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/46.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/48.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/animation/9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/statistic.py" beforeDir="false" afterPath="$PROJECT_DIR$/statistic.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -298,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590520063510</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added the message about loading both animations and games and accelerated the restart of the game from statistics window">
+      <created>1590529173373</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1590529173373</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -312,7 +169,8 @@
     <MESSAGE value="Adding more messages to the log file" />
     <MESSAGE value="Upgrade some things" />
     <MESSAGE value="Made objects with animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made objects with animation" />
+    <MESSAGE value="Added the message about loading both animations and games and accelerated the restart of the game from statistics window" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the message about loading both animations and games and accelerated the restart of the game from statistics window" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Notifications" timestamp="1590314964928">
@@ -323,30 +181,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" width="1089" height="705" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1590323223704" />
-    <state x="612" y="14" width="714" height="810" key="CommitChangelistDialog2" timestamp="1590520060106">
+    <state x="612" y="14" width="714" height="810" key="CommitChangelistDialog2" timestamp="1590529167003">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="612" y="14" width="714" height="810" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590520060106" />
+    <state x="612" y="14" width="714" height="810" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590529167003" />
     <state x="548" y="175" key="FileChooserDialogImpl" timestamp="1590261302843">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="175" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1590261302843" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590528941136">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590529300492">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590528941136" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590528941135">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590529300492" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590529300492">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590528941135" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590528941135">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590529300492" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590529300492">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590528941135" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590528941135">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590529300492" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590529300492">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590528941135" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590529300492" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1590261258121">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
