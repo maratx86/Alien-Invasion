@@ -1,6 +1,8 @@
 class Files():
     def __init__(self):
         self.temp_count_of_shells = 'count_of_shell.ai'
+        self.temp_count_of_objects = 'count_of_objects.ai'
+        self.log_file = 'log.ai.txt'
 
 
 class Colours:
@@ -14,6 +16,11 @@ class Colours:
         self.pink = (255, 100, 180)
         self.orange = (255, 100, 10)
         self.yellow = (255, 255, 0)
+        self.MistyRose = (255, 228, 225)
+        self.HotPink = (255, 105, 180)
+        self.DeepPink = (255, 20, 147)
+        self.LightSalmon = (255, 160, 122)
+        self.Crimson = (220, 20, 60)
 
         self.transparency = self.black
 
@@ -27,16 +34,18 @@ class StatisticSettings:
         self.width = 5
         self.coord_width = 1
 
-        self.colour_column_score = settings.colours.black
-        self.colour_column_level = settings.colours.green
+        self.colour_column_score = settings.colours.LightSalmon
+        self.colour_column_level = settings.colours.Crimson
         self.colour_background = settings.colours.PeachPuff
 
 
 class StartSettings:
     def __init__(self):
-        self.falling_bullet_speed = 5
+        self.falling_bullet_speed = 10
         self.falling_object_speed = 5
+        self.action_object_speed = 5
         self.character_speed = 5
+        self.increaze_falling_speed = True
 
 
 class Settings:
@@ -46,6 +55,7 @@ class Settings:
         self.show_mode = True
 
         self.saving_after_quit = False
+        self.double_wall = False  # True -> Falling Objects should collide 2 times with the wall (both left and right)
         self.sounds = True
         self.sounds_volume = 25  # Number from 1 to 100
 
@@ -56,13 +66,13 @@ class Settings:
         self.start_button_width = 250
         self.start_button_height = 100
         self.start_button_text = 'Start game'
+        self.pause_button_text = 'The game was paused'
 
         self.character_position = (self.WIDTH // 2, 100)
-        self.max_count_of_shells = 3
+        self.character_death_time = 3  # Time how much the character will jump after death (seconds)
+        self.max_count_of_shells = 5
+
         self.colours = Colours()
-
         self.statistic = StatisticSettings(self)
-
         self.files = Files()
-
         self.start = StartSettings()

@@ -34,6 +34,7 @@ class CoordLine(pygame.sprite.Sprite):
 
 
 class ShowStat():
+
     '''
     This class for showing statistics in pygame window
     '''
@@ -42,11 +43,14 @@ class ShowStat():
         self.self = 5
 
     def show(self, stat):
+        stat.rewrite_file()
+        additional.write_log_file('Open the statistics window')
         environ['SDL_VIDEO_CENTERED'] = '500'
         pygame.init()
         pygame.mixer.init()
         screen = pygame.display.set_mode((settings.statistic.WIDTH, settings.statistic.HEIGHT))
-        pygame.display.set_caption("Alien Invasion >>> Statistics")
+        game_name = settings.game_name + ' >>> Statistics'
+        pygame.display.set_caption(game_name)
         clock = pygame.time.Clock()
 
         work_HEIGHT = settings.statistic.HEIGHT - 2 * settings.statistic.skip_edge

@@ -21,10 +21,10 @@ class Stat():
     '''
     def __init__(self):
         self.temp_score = []
-        self.score = [1993, 1668, 2329, 3096, 1677, 2287, 2622]
-        self.max_score = 3096
-        self.levels = [33, 27, 35, 31, 31, 36, 28]
-        self.max_level = 36
+        self.score = [1993, 1668, 2329, 3096, 1677, 2287, 2622, 4100]
+        self.max_score = 4100
+        self.levels = [33, 27, 35, 31, 31, 36, 28, 41]
+        self.max_level = 41
 
     def add_temp_score(self, num):
         self.temp_score.append(num)
@@ -41,11 +41,10 @@ class Stat():
         if num > self.max_level: self.max_level = num
 
     def plus_temp(self):
-        print(self.temp_score)
         result = 0
         for i in self.temp_score:
             result += i
-        return result
+        return self.temp_score[-1]
 
     def rewrite_file(self, null = False):
 

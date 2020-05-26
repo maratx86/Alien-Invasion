@@ -26,7 +26,6 @@ def check_lib():
 
 if check_lib():
     import pygame
-    from statistic import Stat
     from button import Button
     from character import Character
     import settings
@@ -43,6 +42,8 @@ settings = additional.check_settings()
 
 additional.write_temp_file(settings.files.temp_count_of_shells, 0)
 directories = additional.directory_finder()
+
+settings.fonts = pygame.font.get_fonts()
 
 
 def game_making(mode):
@@ -94,11 +95,12 @@ def game_making(mode):
     action_from_obj = False
 
     class FallObject(pygame.sprite.Sprite):
-        def __init__(self, fall_object_img, falling_speed = 5, action_speed = 5,  num_w = 0, row = 0):
-            self.falling_speed = settings.start.falling_object_speed
+        def __init__(self, fall_object_img, falling_speed = settings.start.falling_object_speed,
+                     action_speed = settings.start.action_object_speed,  num_w = 0, row = 0):
+            super().__init__()
+            self.falling_speed = falling_speed
             self.action_speed = action_speed
             self.image = fall_object_img
-            super().__init__()
             self.image.set_colorkey(settings.colours.transparency)
             self.mask = pygame.mask.from_surface(self.image)
             self.rect = self.image.get_rect()
@@ -121,13 +123,15 @@ def game_making(mode):
                 else: self.rect.x -= self.action_speed
             
             if self.rect.right >= settings.WIDTH or self.rect.left <= 0:
-                count_of_collision += 1
-                if count_of_collision % (2*number_of_row) == 0:
+                if settings.double_wall:
+                    count_of_collision += 1
+                    if count_of_collision % (2 * number_of_row) == 0:
+                        down_flag = True
+                        count_of_collision = 0
+                else:
                     down_flag = True
-                    count_of_collision = 0
                 direction_flag = True
-         
-            if self.rect.top <= character.rect.bottom:
+            if self.rect.top <= 0:
                 self.kill()
                 character.lives = 0
 
@@ -144,11 +148,14 @@ def game_making(mode):
         number_of_war = settings.WIDTH // 200
         number_of_row = settings.HEIGHT // 2 // 150
         if not test:
+            if settings.start.increaze_falling_speed: falling_speed = settings.start.falling_object_speed + level
+            else: falling_speed = settings.start.falling_object_speed
+            action_speed = settings.start.action_object_speed + level
             for i_r in range(number_of_row):
                 for i_w in range(number_of_war):
-                    fall_object = FallObject(fall_object_img, falling_speed + level, action_speed + level, 200*(i_w+1), settings.HEIGHT - 100 * (i_r + 1))
+                    fall_object = FallObject(fall_object_img, falling_speed,
+                                             action_speed, 200*(i_w+1), settings.HEIGHT - 100 * (i_r + 1))
                     fall_objects.add(fall_object)
-                    
             all_sprites.add(fall_objects)
             return number_of_war * number_of_row
 
@@ -174,9 +181,9 @@ def game_making(mode):
 
     def new_game(level = 0):
         nonlocal all_sprites, character, all_sprites, fall_objects, shell_objects, kill_fall_object, down, count_of_wariors, count_of_alive
-        # additional.write_temp_file(settings.files.temp_count_of_shells, 0)
+        additional.write_temp_file(settings.files.temp_count_of_shells, 0)
         all_sprites = pygame.sprite.Group()
-        character = Character(level, character_right_img, character_left_img, character_death_img)
+        # character = Character(level, character_right_img, character_left_img, character_death_img)
         all_sprites.add(character)
         fall_objects = pygame.sprite.Group()
         shell_objects = pygame.sprite.Group()
@@ -201,8 +208,11 @@ def game_making(mode):
     direction = False
     direction_flag = False
 
+    advise_font = pygame.font.Font(None, 25)
+    advise_table = advise_font.render('Press ESC to pause', 1, settings.colours.DeepPink)
+    advise_coord = advise_table.get_rect(center=(settings.WIDTH - 100, settings.HEIGHT - 10))
+
     def change_smth(return_dict):
-        ['running', 'character', 'freaze_game', 'death_flag', 'shell_objects', 'stat']
         nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, CURRENT_SCORE, pause_flag, start_game_time
         for var, val in return_dict.items():
             if var == 'running': running = val
@@ -217,6 +227,7 @@ def game_making(mode):
             elif var == 'current_score':
                 start_game_time = pygame.time.get_ticks() - val * 100
 
+    additional.write_log_file('Start game window')
 
     while running:
         clock.tick(settings.FPS)
@@ -229,6 +240,7 @@ def game_making(mode):
         if not freaze_game:
             action_from_obj = True
             hits_shell = pygame.sprite.groupcollide(shell_objects, fall_objects, True, pygame.sprite.collide_mask)
+            hits_character = pygame.sprite.spritecollide(character, fall_objects, True, pygame.sprite.collide_mask)
 
             if death_flag:
                 if last == 'left':
@@ -248,16 +260,21 @@ def game_making(mode):
                 Character.jump(character)
 
                 first_font = pygame.font.Font(None, 50)
-                score_table = first_font.render('Your reached score : {}'.format(CURRENT_SCORE), 1, settings.colours.black, settings.colours.orange)
+                score_table = first_font.render('Your reached score : {}'.format(CURRENT_SCORE), 1,
+                                                settings.colours.black, settings.colours.orange)
 
-                leight = pygame.mixer.Sound.get_length(end_music)
+                if settings.sounds:
+                    length = pygame.mixer.Sound.get_length(end_music)
+                else:
+                    length = settings.character_death_time
                 seconds = (pygame.time.get_ticks() - start_ticks) / 1000
-                if leight <= seconds:
+                if length <= seconds:
                     freaze_game = True
-                    if len(stat.temp_score) > 0: CURRENT_SCORE = stat.plus_temp()
                     stat.add_max_score(CURRENT_SCORE)
                     stat.add_level(character.level)
             else:
+                if hits_character:
+                    character.lives = 0
                 if hits_shell:
                     kill_fall_object += 1
                     count_of_shells = additional.read_temp_file(settings.files.temp_count_of_shells)[0]
@@ -268,12 +285,13 @@ def game_making(mode):
                     additional.write_temp_file(settings.files.temp_count_of_shells, count_of_shells)
 
                     character.killed_objects += 1
-                    if not character.killed_objects == count_of_wariors: hit_sound.play()
+                    if not character.killed_objects == count_of_wariors and settings.sounds: hit_sound.play()
                     count_of_alive -= 1
                 if character.lives == 0:
                     character.death()
-                    pygame.mixer.music.pause()
-                    end_music.play()
+                    if settings.sounds:
+                        pygame.mixer.music.pause()
+                        end_music.play()
                     start_ticks = pygame.time.get_ticks()
                     blackscreen.set_alpha(200)
                     last = ''
@@ -281,7 +299,6 @@ def game_making(mode):
                     character.character_right_img = character_death_img
                     death_flag = True
                     if character.lives == 0:
-                        reason_die = 'YOU DIE'
                         reason_pic = reason_pic_died
 
             all_sprites.update()
@@ -306,6 +323,9 @@ def game_making(mode):
 
                 screen.blit(score_table, (20, 30))
                 screen.blit(level_table, (settings.WIDTH//2 + 200, 30))
+
+                screen.blit(advise_table, advise_coord)
+
                 if direction_flag:
                     direction = not direction
                     direction_flag = False
@@ -313,17 +333,35 @@ def game_making(mode):
                     down_flag = False
                     down = not down
             if (character.killed_objects == count_of_wariors or count_of_alive == 0 or action_from_obj) and not death_flag: 
-                complete_sound.play()
+                if settings.sounds: complete_sound.play()
                 character.killed_objects = 0
                 character.level += 1
                 count_of_alive = new_game(character.level + 1)
         else:
-            # print(pause_flag)
             if pause_flag:
-                '''pause actions'''
+                pause_font = pygame.font.Font(None, 75)
+                pause_table = pause_font.render(settings.pause_button_text, 1, settings.colours.MistyRose)
+                pause_coord = pause_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2))
+
+                first_font = pygame.font.Font(None, 50)
+                score_table = first_font.render('Your score now : {}'.format(CURRENT_SCORE), 1, settings.colours.MistyRose)
+                score_coord = score_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2 + 100))
+
+                second_font = pygame.font.Font(None, 50)
+                level_table = second_font.render('Level now : {}'.format(character.level), 1, settings.colours.MistyRose)
+                level_coord = level_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2 + 150))
+
+                screen.blit(background_img, (0, 0))
+                all_sprites.draw(screen)
+                screen.blit(blackscreen, (0, 0))
+
+                screen.blit(pause_table, pause_coord)
+                screen.blit(score_table, score_coord)
+                screen.blit(level_table, level_coord)
+
             else:
                 if death_flag:
-                    pygame.mixer.music.pause()
+                    if settings.sounds: pygame.mixer.music.pause()
                     count_of_wariors = generate_wariors(False)
                     character.kill()
                     character = Character(0, character_right_img, character_left_img, character_death_img)
@@ -357,5 +395,5 @@ def game_making(mode):
 
 if __name__ == '__main__':
     try: game_making(random.randint(1, 3))
-    except pygame.error: print('end')
-else: print()
+    except pygame.error: additional.write_log_file('Game was closed after showing statistics')
+else: additional.write_log_file('Attempt to open main file from non-main')

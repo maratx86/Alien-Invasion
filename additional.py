@@ -1,6 +1,9 @@
 import os
 import codecs
+import random
 from settings import Settings
+from  time import strftime
+
 
 '''
 This module using for additional functions and contain this functions
@@ -35,10 +38,9 @@ def directory_finder():
 
     if platform == "win32":
         _os_ = "windows"
-        main_dir = os.getcwd()
-        media_dir = main_dir + "\\media\\"
-        shop_dir = media_dir + "shop\\"
-        mode_dir = media_dir + "mode\\"
+        main_dir = os.getcwd() + '\\'
+        media_dir = main_dir + 'media\\'
+        mode_dir = media_dir + 'mode\\'
         slash = '\\'
         temp_dir = os.getenv('TEMP')
         if temp_dir == None: temp_dir = os.getenv('TMP')
@@ -46,11 +48,10 @@ def directory_finder():
     # ~ elif platform == "darwin": _os_ = "OS X"
     else:
         _os_ = "linux or MacOS"
-        main_dir = os.getcwd()
-        media_dir = main_dir + "/media/"
-        shop_dir = media_dir + "shop/"
-        mode_dir = media_dir + "mode/"
-        slash = "/"
+        main_dir = os.getcwd() + '/'
+        media_dir = main_dir + 'media/'
+        mode_dir = media_dir + 'mode/'
+        slash = '/'
         temp_dir = os.getenv('TEMP')
         if temp_dir == None: temp_dir = os.getenv('TMP')
         temp_dir += slash
@@ -62,7 +63,6 @@ def directory_finder():
         "temp_dir": temp_dir,
         "main_dir": main_dir,
         "media_dir": media_dir,
-        "shop_dir": shop_dir,
         "mode_dir": mode_dir
     }
     return directories
@@ -98,3 +98,37 @@ def read_temp_file(file_name):
 
 def check_settings():
     return Settings()
+
+
+settings = check_settings()
+
+
+def get_random_array_component(array):
+    index = random.randint(0, len(array) - 1)
+    return array[index]
+
+
+def edit_file(way, plus_data):
+    try:
+        fle = codecs.open(way, 'r', 'utf-8')
+        data = fle.read()
+        fle.close()
+        data = data.split('\n')
+        new_data = ''
+        for line in data:
+            line = line.strip('\r')
+            if line != '': new_data += line + '\n'
+        new_data += '{}'.format(plus_data.strip('\r'))
+        fle = codecs.open(way, 'w')
+        fle.write(new_data)
+        fle.close()
+    except FileNotFoundError:
+        fle = codecs.open(way, 'w', 'utf-8')
+        fle.write(plus_data)
+        fle.close()
+
+
+def write_log_file(decription = 'Start'):
+    way = directories['main_dir'] + settings.files.log_file
+    data = strftime('[%Y.%m.%d %H:%M:%S]') + ' {}'.format(decription)
+    edit_file(way, data)
