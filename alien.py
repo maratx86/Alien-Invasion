@@ -40,7 +40,6 @@ else:
 
 
 settings = additional.check_settings()
-
 additional.write_temp_file(settings.files.temp_count_of_shells, 0)
 directories = additional.directory_finder()
 
@@ -92,9 +91,14 @@ def game_making(mode):
     loading_font = pygame.font.Font(None, 75)
     loading_table = loading_font.render(settings.loading_text, 1, settings.colours.loading)
     loading_coord = loading_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 2))
+
     screen.fill(settings.colours.DarkGrey)
     screen.blit(loading_table, loading_coord)
     pygame.display.flip()
+
+    stat_font = pygame.font.Font(None, 75)
+    stat_table = stat_font.render(settings.statistic.not_exist, 1, settings.colours.red, settings.colours.black)
+    stat_coord = stat_table.get_rect(center=(settings.WIDTH // 2, settings.HEIGHT // 4))
 
     character_left_img = pygame.image.load(directories["media_dir"] + "{}_character.png".format(mode)).convert()
     character_right_img = pygame.image.load(directories["media_dir"] + "{}_character.png".format(mode)).convert()
@@ -128,13 +132,9 @@ def game_making(mode):
     end_music = pygame.mixer.Sound(end_music)
     end_music.set_volume(0.75 * music_volume)
 
-    level_mode = 0
     last_shell = 0
     CURRENT_SCORE = 0
-    falling_speed = 5
-    action_speed = 5
     count_of_collision = 0
-    action_from_obj = False
 
     class FallObject(pygame.sprite.Sprite):
         def __init__(self, fall_object_img, falling_speed = settings.start.falling_object_speed,
@@ -249,6 +249,8 @@ def game_making(mode):
     down = False
     down_flag = False
     change_mode = False
+    show_have_not_stat = False
+    time_show_stat = 0
 
     direction = False
     direction_flag = False
@@ -259,7 +261,7 @@ def game_making(mode):
 
     def change_smth(return_dict):
         nonlocal running, character, freaze_game, death_flag, shell_objects, stat, all_sprites, \
-            CURRENT_SCORE, pause_flag, start_game_time, last_shell
+            CURRENT_SCORE, pause_flag, start_game_time, last_shell, show_have_not_stat
         for var, val in return_dict.items():
             if var == 'running': running = val
             elif var == 'character': character = val
@@ -272,8 +274,11 @@ def game_making(mode):
             elif var == 'start_game_time': start_game_time = val
             elif var == 'current_score': start_game_time = pygame.time.get_ticks() - val * 100
             elif var == 'last_shell': last_shell = val
+            elif var == 'show_have_not_stat': show_have_not_stat = val
 
-    additional.write_log_file('Game window was opened')
+    message = 'Game window was opened'
+    if settings.animation.show_animation: message += ' with animation.'
+    additional.write_log_file(message)
 
     while running:
         clock.tick(settings.FPS)
@@ -443,7 +448,14 @@ def game_making(mode):
                     edge_objects.update()
                     edge_objects.draw(screen)
 
-
+                if show_have_not_stat:
+                    if time_show_stat == 0:
+                        time_show_stat = pygame.time.get_ticks()
+                    now = pygame.time.get_ticks()
+                    screen.blit(stat_table, stat_coord)
+                    if now - time_show_stat > settings.statistic.time_not_exist * 1000:
+                        show_have_not_stat = False
+                        time_show_stat = 0
         pygame.display.flip()
     pygame.quit()
 
@@ -451,6 +463,9 @@ def game_making(mode):
 
 
 if __name__ == '__main__':
-    try: game_making(random.randint(1, 3))
+    print(settings.info)
+    try:
+        game_making(settings.start.mode)
+        additional.write_log_file('Game was closed.')
     except pygame.error: additional.write_log_file('Game was closed after showing statistics')
 else: additional.write_log_file('Attempt to open main file from non-main')

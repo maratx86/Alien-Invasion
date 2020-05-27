@@ -1,4 +1,9 @@
-class Files():
+class Constants:
+    def __init__(self):
+        0
+
+
+class Files:
     def __init__(self):
         self.temp_count_of_shells = 'count_of_shell.ai'
         self.temp_count_of_objects = 'count_of_objects.ai'
@@ -40,6 +45,9 @@ class StatisticSettings:
         self.colour_column_level = settings.colours.Crimson
         self.colour_background = settings.colours.PeachPuff
 
+        self.not_exist = 'You have no statistic or you have 0 level'
+        self.time_not_exist = 2  # seconds
+
 
 class StartSettings:
     def __init__(self):
@@ -49,14 +57,16 @@ class StartSettings:
         self.character_speed = 5
         self.increaze_falling_speed = True
 
+        self.mode = 2
+
 
 class Animation:
     def __init__(self):
         self.show_animation = True  # The game will load longer
 
         self.show_pause = True
-        self.show_start = False
-        self.show_edge = True
+        self.show_start = True
+        self.show_edge = False
 
 
 class Settings:
@@ -90,3 +100,10 @@ class Settings:
         self.files = Files()
         self.start = StartSettings()
         self.animation = Animation()
+
+        self.info = '''
+Welcome to Alien Invasion Game!
+Official repos: https://github.com/MartForFun/Alien-Invasion
+
+
+'''

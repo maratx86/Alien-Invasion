@@ -8,7 +8,8 @@ settings = additional.check_settings()
 
 
 def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, character,
-                start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE, last_shell):
+                start_button, shell_objects, all_sprites, shell_object_img, CURRENT_SCORE,
+                last_shell):
     return_dict = {}
     if event.type == pygame.QUIT:
         return_dict['running'] = False
@@ -22,7 +23,7 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
                     return_dict['current_score'] = stat.plus_temp()
                     return_dict['pause_flag'] = False
                     return_dict['freaze_game'] = False
-                    additional.write_log_file('Game resumed with a score of {})'.format(CURRENT_SCORE))
+                    additional.write_log_file('Game resumed with a score of {}'.format(CURRENT_SCORE))
 
         else:
             if event.type == pygame.KEYDOWN:
@@ -32,7 +33,7 @@ def check_event(pygame, event, stat, freaze_game, pause_flag, death_flag, charac
                         flag = ss.show(stat)
                         if flag: game_making(random.randint(1, 3))
                         else: additional.write_log_file('The game was closed after viewing statistics')
-                    else: print('You have no statistic')
+                    else: return_dict['show_have_not_stat'] = True
                 elif event.key == pygame.K_SPACE:
                     start_game_time = pygame.time.get_ticks()
                     character.lives = 1
