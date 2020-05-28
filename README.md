@@ -26,6 +26,7 @@ character.py is a file for storing the structure of the Character class. This cl
 
 game_functions.py - file for storing the event handling function from the keyboard.
 settings.py - file for storing the structure of the Settings, Colors, StartSettings, StatisticSettings class, which contain the basic settings for controlling the game (Screen expansion, speed of objects, colors, etc.).
+
 statistic.py - file for storing the structure of the Stat class. This class is used for statistics. It contains methods for adding statistics, such as points per game and level, and it also contains a method of overwriting a file to save the results for the next game.
 
 show_statistic.py - a file for displaying game statistics in the form of diagrams with points and achieved levels, contains methods. It contains 2 classes, one displays the Pygame window, and the other creates the desired number of columns using the saved data from the Stat() class.
