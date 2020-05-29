@@ -57,12 +57,12 @@ class StartSettings:
         self.character_speed = 5
         self.increaze_falling_speed = True
 
-        self.mode = 2
+        self.mode = 1
 
 
 class Animation:
     def __init__(self):
-        self.show_animation = True  # The game will load longer
+        self.show_animation = False  # The game will load longer
 
         self.show_pause = True
         self.show_start = False
