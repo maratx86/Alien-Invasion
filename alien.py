@@ -1,42 +1,11 @@
-def check_lib():
-    try:
-        lib = "pygame"
-        import pygame
-        lib = "random"
-        import random
-        lib = "os"
-        import os
-        lib = "sys"
-        import sys
-        lib = 'local statistic'
-        from statistic import Stat
-        lib = 'local button'
-        from button import Button
-        lib = 'local character'
-        from character import Character
-        lib = 'local show_statistic'
-        import show_statistic
-        lib = 'local settings'
-        import settings
-        return True
-    except ImportError:
-        print('\n>>>> Library "{}" not installed <<<<'.format(lib))
-        return False
-
-
-if check_lib():
-    import pygame
-    from button import Button
-    from character import Character
-    import settings
-    import random
-    import os
-    import additional
-    import game_functions
-    import create_animation_code
-else:
-    print("\nSome library is missing...\a")
-    raise SystemExit(10)
+import pygame
+from button import Button
+from character import Character
+import settings
+import os
+import additional
+import game_functions
+import create_animation_code
 
 
 settings = additional.check_settings()

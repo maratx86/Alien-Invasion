@@ -9,9 +9,16 @@ Write "Yes" if you need or "Not" if not
 >>>> '''
 stat = Stat()
 agreement = input(message)
-if agreement.lower() == 'yes':
+
+def rewrite():
+    global stat
     if len(stat.score) > 0:
         write_log_file('User reset statistics (scores: {}, levels: {})'.format(tuple(stat.score), tuple(stat.levels)))
         stat.rewrite_file(True)
     print('Statistic resetting successful !')
-else: write_log_file('User canceled statistics reset.')
+
+
+if __name__ == '__main__':
+    if agreement.lower() == 'yes':
+        rewrite()
+    else: write_log_file('User canceled statistics reset.')

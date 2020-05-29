@@ -1,0 +1,4 @@
+[2020.05.29 15:55:43] Attempt to open main file from non-main
+[2020.05.29 15:55:54] Game window was opened with animation.
+[2020.05.29 15:56:16] The game is paused (Score: 81)
+[2020.05.29 15:56:23] Game was closed.

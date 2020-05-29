@@ -7,7 +7,7 @@ class Files:
     def __init__(self):
         self.temp_count_of_shells = 'count_of_shell.ai'
         self.temp_count_of_objects = 'count_of_objects.ai'
-        self.log_file = 'log.ai.txt'
+        self.log_file = 'log.txt'
 
 
 class Colours:
@@ -65,8 +65,8 @@ class Animation:
         self.show_animation = True  # The game will load longer
 
         self.show_pause = True
-        self.show_start = True
-        self.show_edge = False
+        self.show_start = False
+        self.show_edge = True
 
 
 class Settings:
